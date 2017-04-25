@@ -1,18 +1,18 @@
-package bst;
 
 import java.util.Iterator;
 
-public class Dictionary<K,V> implements DictionaryInterface<K,V> {
+public class Dictionary<K extends Comparable<? super K>, V>
+   implements DictionaryInterface<K, V> {
 
-   Btree<Entry> st = new Btree<>();
+   Btree<Entry<K, V>> st;
    
    public V add(K key, V value) {
       V result = null;
-      Entry<K, V> e = new Entry<>(key, value);
+      Entry<K, V> e = new Entry<K, V>(key, value);
       Entry<K, V> r = st.add(e);
 
       if (r != null)
-         result = r.value;
+			result = r.data;
       
       return result;
    }
@@ -26,7 +26,7 @@ public class Dictionary<K,V> implements DictionaryInterface<K,V> {
    public V getValue(K key) {
       V result = null;
       return result;
-
+      
    }
    
    public boolean contains(K key) {

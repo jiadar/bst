@@ -1,20 +1,18 @@
 #!/bin/bash
 
 # User Configurable 
-DEVHOME=/Users/ross/work
-PROJ="cs110c_ccsf"
-PKG="bst"
+DEVHOME=/Users/ross/work/bst
 VERBOSE=false
 CLASSES="Btree.java Main.java DictionaryInterface.java Dictionary.java" 
-TESTER=""
+TESTER="Main"
 STANDALONE_TESTER=""
 MAKE_SA_TEST=0
 
 # Should not have to configure anything below 
-LIBDIR=$DEVHOME/$PROJ/lib
-BINDIR=$DEVHOME/$PROJ/bin
-SRCDIR=$DEVHOME/$PROJ/src/$PKG
-DOCDIR=$DEVHOME/doc/$PKG
+LIBDIR=$DEVHOME/lib
+BINDIR=$DEVHOME/bin
+SRCDIR=$DEVHOME/src
+DOCDIR=$DEVHOME/doc
 
 if [ ! -d $LIBDIR ] ; then mkdir -p $LIBDIR ; fi
 if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
@@ -26,7 +24,7 @@ do
     javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$CLASS
 done
 
-java -ea -cp .:$BINDIR:$LIBDIR $PKG.Main
+java -ea -cp .:$BINDIR:$LIBDIR $TESTER
 
 if test "$(find $SRCDIR/.timestamp -mmin +15)" ; then
     pushd $SRCDIR >/dev/null 2>&1

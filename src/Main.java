@@ -1,14 +1,25 @@
-package bst;
-
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
    public static void main(String[] args) {
       //      doSearch();
-      
+      doRemoveTest();
    }
 
+   private static void doRemoveTest() {
+      Btree<Integer>  b = new Btree<Integer>();
+      b.add(10);
+      b.add(5);
+      b.add(3);
+      b.add(20);
+      b.add(17);
+      b.add(1);
+      b.add(4);
+      b.add(13);
+      System.out.println(b.toString());
+   }
+   
    private static void doSearch() {
       int SIZE=100000;
       long startTime, endTime, duration;

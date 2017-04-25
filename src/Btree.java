@@ -1,4 +1,4 @@
-package bst;
+import java.util.ArrayDeque;
 
 public class Btree<T extends Comparable<? super T>> {
 
@@ -28,7 +28,7 @@ public class Btree<T extends Comparable<? super T>> {
    }
 
 
-   public boolean isEmpty() {
+   public boolean isEmpty() {      
       return (data == null && left == null && right == null);
    }
 
